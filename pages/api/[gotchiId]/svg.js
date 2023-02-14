@@ -28,7 +28,7 @@ const GET_AAVEGOTCHI_SVGs = gql`
 `;
 
 export default async function handler(req, res) {
-    const gotchiId = "4430";
+    const { gotchiId } = req.query;
 
     try {
         const { data } = await apolloClient.query({
@@ -36,7 +36,8 @@ export default async function handler(req, res) {
             variables: { id: gotchiId },
         });
 
-        res.setHeader("Content-Type", "application/json")
+        return res
+            .setHeader("Content-Type", "application/json")
             .setHeader("Cache-Control", "s-maxage=3600, public")
             .status(200)
             .json({ data });
