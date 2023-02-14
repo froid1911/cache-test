@@ -5,7 +5,6 @@ import {
     InMemoryCache,
 } from "@apollo/client";
 
-/* eslint-disable @typescript-eslint/explicit-module-boundary-types */
 const createApolloClient = () => {
     return new ApolloClient({
         link: createHttpLink({
